@@ -1,0 +1,35 @@
+{
+  "name": "shopping_store_process_api",
+  "version": "1.0.0",
+  "description": "The scenario is shopping store website, and then process buyer and seller clients information",
+  "private": true,
+  "license": "UNLICENSED",
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "build": "nest build",
+    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+    "start": "NODE_OPTIONS='--unhandled-rejections=warn' nest start",
+    "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:cov": "jest --coverage"
+  },
+  "dependencies": {
+    "@nestjs/cli": "9.5.0",
+    "@nestjs/common": "^9.4.2",
+    "@nestjs/core": "^9.4.2",
+    "@nestjs/swagger": "^6.3.0",
+    "@nestjs/config": "^2.3.2",
+    "@nestjs/mongoose": "^9.2.2",
+    "@nestjs/platform-express": "9.4.2",
+    "@nestjs/jwt": "^9.1.2",
+    "@types/multer": "1.4.7",
+    "reflect-metadata": "^0.1.13",
+    "class-transformer": "0.5.1",
+    "class-validator": "^0.14.0",
+    "nest-winston": "^1.9.2",
+    "winston": "^3.8.2",
+    "mongoose": "^7.2.0",
+    "bcrypt": "^5.1.0"
+  }
+}
