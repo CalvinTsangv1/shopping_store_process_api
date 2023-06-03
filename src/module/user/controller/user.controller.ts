@@ -1,5 +1,5 @@
 import { Body, Controller, Logger, Post, UploadedFile, UseInterceptors } from "@nestjs/common";
-import { ApiBody, ApiTags } from "@nestjs/swagger";
+import { ApiBody, ApiTags, ApiOperation } from "@nestjs/swagger";
 import { UserAuthenticationRequestDto } from "../dto/user-authentication.request.dto";
 import { UserService } from "../service/user.service";
 import { FileInterceptor } from "@nestjs/platform-express";
@@ -15,8 +15,9 @@ export class UserController {
 
     /* create user, user login, user logout*/
     @IsPublic()
+    @ApiOperation({summary: "create user"})
     @ApiBody({type: UserAuthenticationRequestDto})
-    @Post("create")
+    @Post()
     public async create(@Body() requestDto: UserAuthenticationRequestDto):Promise<any> {
         return this.userService.createUser(requestDto);
     }

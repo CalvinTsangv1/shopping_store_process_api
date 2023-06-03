@@ -19,6 +19,10 @@ async function main() {
         cors: true
     });
 
+    const testAddon = require('../build/Release/testaddon');
+    console.log(testAddon);
+    module.exports = testAddon.ConvertImageFileFormat("test.jpg", "png");
+
     const reflector = app.get(Reflector);
     const configService = app.get<ConfigService>(ConfigService);
     const jwtService = app.get<JwtService>(JwtService);

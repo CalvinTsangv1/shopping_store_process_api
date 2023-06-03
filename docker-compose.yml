@@ -1,0 +1,10 @@
+version: "3.9"
+services:
+  core:
+    image: calvintsangv1/github-pipeline-test:latest
+    container_name: 'test-server'
+    restart: on-failure
+    expose:
+      - 8080
+    ports:
+      - 8080:8080

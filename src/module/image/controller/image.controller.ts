@@ -15,9 +15,9 @@ export class ImageController {
 
     constructor(private readonly imageService: ImageService) {}
 
-    @ApiOperation({summary: "process image"})
+    @ApiOperation({summary: "upload image"})
     @Roles(RoleTypeEnum.ADMIN, RoleTypeEnum.STAFF)
-    @Post("process")
+    @Post()
     @UseInterceptors(FileInterceptor('photo'))
     public async upload(@CurrentUser() user: JwtModel, @UploadedFile() file: Express.Multer.File):Promise<any> {
         return this.imageService.uploadAvatar(user.username, file);
@@ -25,7 +25,7 @@ export class ImageController {
 
     @ApiOperation({summary: "get image"})
     @Roles(RoleTypeEnum.ADMIN, RoleTypeEnum.STAFF)
-    @Get("image")
+    @Get()
     public async getImage(@CurrentUser() user: JwtModel):Promise<any> {
         return this.imageService.getAvatar(user.username);
     }
