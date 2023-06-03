@@ -4,13 +4,11 @@
         "include_dirs": [
             "<!@(node -p \"require('node-addon-api').include\")",
             "../header",
-            "/opt/homebrew/Cellar/opencv/4.7.0_4/include/opencv4",
+            "/usr/include/opencv4",
+            "/usr/include",
         ],
-        "libraries": [
-             "/opt/homebrew/Cellar/opencv/4.7.0_4/lib/lib*.*"
-        ],
-        "cflags!": [ "-fno-exceptions" ],
-        "cflags_cc!": [ "-fno-rtti,-fno-exceptions" ],
+        "cflags!": [ "" ],
+        "cflags_cc!": [ "-fno-rtti" ],
         "sources": [
             "cppsrc/image_process/convert_image_format.cpp",
             "cppsrc/image_process/rename_file.cpp",
@@ -24,7 +22,7 @@
         'defines': [ 'NAPI_DISABLE_CPP_EXCEPTIONS' ],
         'conditions': [
             [
-            "OS==\"mac\"", {
+            "OS==\"ubuntu\"", {
                 "xcode_settings": {
                 "OTHER_CFLAGS": [
                     "-mmacosx-version-min=10.7",
@@ -35,7 +33,14 @@
                 "GCC_ENABLE_CPP_EXCEPTIONS": "YES"
                 }
             }
-            ]
+            ],
+            [ "OS=='linux'", {
+                "cflags+": [ "-std=c++11", "-fexceptions" ],
+                "cflags_c+": [ "-std=c++11", "-fexceptions" ],
+                "cflags_cc+": [ "-std=c++11", "-fexceptions" ],
+                "GCC_ENABLE_CPP_RTTI": "YES",
+                "GCC_ENABLE_CPP_EXCEPTIONS": "YES"
+          }],
       ]
     }]
 }

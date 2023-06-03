@@ -27,7 +27,7 @@ void RenameFile::RenameImageFile(const Napi::CallbackInfo& info) {
     Napi::String folder_path = info[0].As<Napi::String>();
     Napi::String ext = info[1].As<Napi::String>();
 
-    for(auto& file: fs::directory_iterator(folder_path)) {
+    for(auto& file: fs::directory_iterator(folder_path.ToString().Utf8Value().c_str())) {
         if(file.path().extension() == ext) {
             fs::path new_name = file.path().stem().string() + "_new" + ext.ToString().Utf8Value().c_str();
             fs::rename(file.path(), new_name);

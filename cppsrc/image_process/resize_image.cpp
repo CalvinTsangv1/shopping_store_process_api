@@ -29,7 +29,7 @@ void ResizeImage::ResizeImageFile(const Napi::CallbackInfo& info) {
     cv::Mat image, resize_image;
     cv::Size size(640, 480);
 
-    for(auto& file: fs::directory_iterator(folder_path)) {
+    for(auto& file: fs::directory_iterator(folder_path.ToString().Utf8Value().c_str())) {
         if(file.path().extension() == ".png") {
             image = cv::imread(file.path().string());
             cv::resize(image, resize_image, size);

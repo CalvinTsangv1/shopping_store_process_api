@@ -30,7 +30,7 @@ Napi::Value ConvertImageFormat::ConvertImageFileFormat(const Napi::CallbackInfo&
     Napi::String ext = info[1].As<Napi::String>();
     cv::Mat image;
 
-    for(auto& file: fs::directory_iterator(folder_path)) {
+    for(auto& file: fs::directory_iterator(folder_path.ToString().Utf8Value().c_str())) {
         if(file.path().extension() == ".png" || file.path().extension() == ".PNG" || file.path().extension() == ".jpeg" || file.path().extension() == ".JPEG") {
             image = cv::imread(file.path().string());
             cv::imwrite(file.path().stem().string() + ".jpg", image);
