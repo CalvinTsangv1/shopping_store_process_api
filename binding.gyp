@@ -10,11 +10,8 @@
         "cflags!": [ "" ],
         "cflags_cc!": [ "-fno-rtti" ],
         "sources": [
-            "cppsrc/image_process/convert_image_format.cpp",
-            "cppsrc/image_process/rename_file.cpp",
-            "cppsrc/image_process/rescale_image_size.cpp",
-            "cppsrc/image_process/resize_image.cpp",
             "cppsrc/main.cpp",
+            "cppsrc/image_process/image_process.cpp"
         ],
         'dependencies': [
             "<!(node -p \"require('node-addon-api').gyp\")"
