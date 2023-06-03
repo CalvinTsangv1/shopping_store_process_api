@@ -3,14 +3,13 @@ services:
   shopping_store_process_api:
     image: shopping_store_process_api:latest
     container_name: 'shopping_store_process_api'
-    restart: on-failure
+    restart: always
     expose:
-      - 5000
+      - 5001
     ports:
-      - 8080:5000
+      - 5001:5001
     volumes:
-      - ./shopping_store_process_api:/code
-
+      - ./:/usr/src/app
 networks:
   default:
     name: proxy
