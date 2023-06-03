@@ -1,10 +1,16 @@
 version: "3.9"
 services:
-  core:
-    image: calvintsangv1/github-pipeline-test:latest
-    container_name: 'test-server'
+  shopping_store_process_api:
+    image: shopping_store_process_api:latest
+    container_name: 'shopping_store_process_api'
     restart: on-failure
     expose:
-      - 8080
+      - 5000
     ports:
-      - 8080:8080
+      - 8080:5000
+    volumes:
+      - ./shopping_store_process_api:/code
+
+networks:
+  default:
+    name: proxy
